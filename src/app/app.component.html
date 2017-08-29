@@ -1,0 +1,62 @@
+<md-sidenav-container fullscreen>
+  <md-toolbar color="primary">
+
+    <button md-button (click)="sidenav.toggle()">
+              <md-icon>menu</md-icon>
+          </button> {{title}}
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <a href="http://www.inquaero.com/ABAPFire"><button md-button color="accent"><md-icon>favorite</md-icon> ABAPFire</button></a>
+    </div>
+    <button md-button [md-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+            <md-icon>more_vert</md-icon>
+           </button>
+  </md-toolbar>
+  <md-menu x-position="before" #menu="mdMenu">
+    <a href="http://www.inquaero.com/ABAPFire"><button md-button color="accent"><md-icon>favorite</md-icon> ABAPFire</button></a>
+  </md-menu>
+  <md-sidenav #sidenav mode="side" opened="true">
+    <div class="example-container">
+      <div class="example-header">
+        <md-input-container floatPlaceholder="never">
+          <input mdInput #filter placeholder="Filter flights">
+        </md-input-container>
+      </div>
+      <md-nav-list>
+        <h3 md-subheader>Flights</h3>
+        <md-list-item *ngFor="let flight of flights | async" (click)="listItemClick(flight)">
+          <md-icon md-list-icon>flight_takeoff</md-icon>
+          <h4 md-line>{{flight.carrid}} - {{flight.connid}}</h4>
+          <p md-line> {{flight.fldate | date}} </p>
+        </md-list-item>
+      </md-nav-list>
+    </div>
+  </md-sidenav>
+
+  <md-grid-list cols="4" rowHeight="100%">
+    <md-grid-tile [colspan]="4" [rowspan]="1">
+      <md-card class="example-card">
+        <md-card-header>
+          <md-card-title>{{selectedFlight.carrid}} - {{selectedFlight.connid}}</md-card-title>
+          <md-card-subtitle>Flight date: {{selectedFlight.fldate | date}}</md-card-subtitle>
+          <md-card-subtitle>Departure time: {{selectedFlight.deptime}}</md-card-subtitle>
+        </md-card-header>
+        <img md-card-image src="assets/img/{{selectedFlight.planetype}}.jpg">
+        <md-card-content>
+          <p>
+            Plan type: {{selectedFlight.planetype}}
+          </p>
+          <p>Departure Airport: {{selectedFlight.cityfrom}} / {{selectedFlight.airpfrom}}
+          </p>
+          <p>Arrival Airport: {{selectedFlight.cityto}} / {{selectedFlight.airpto}}
+            </p>
+        </md-card-content>
+        <md-card-actions>
+          <div fxFlex></div>
+          <button md-button (click)="openDialog()"><md-icon>person_add</md-icon> BOOK</button>
+        </md-card-actions>
+      </md-card>
+    </md-grid-tile>
+  </md-grid-list>
+</md-sidenav-container>

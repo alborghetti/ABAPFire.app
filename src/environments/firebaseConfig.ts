@@ -1,9 +1,9 @@
 export const firebaseConfig = {
    // Paste all this from the Firebase console...
-    apiKey: 'your_apikey',
-    authDomain: 'your_authDomain',
-    databaseURL: 'your_databaseURL',
-    projectId: 'your_projectId',
-    storageBucket: 'your_storageBucket',
-    messagingSenderId: 'your_messagingSenderId'
+   apiKey: 'AIzaSyCWOrr40bNNP-7yWDGgdDcpfWHRd7ZGG50',
+   authDomain: 'abap-test-825b8.firebaseapp.com',
+   databaseURL: 'https://abap-test-825b8.firebaseio.com',
+   projectId: 'abap-test-825b8',
+   storageBucket: 'abap-test-825b8.appspot.com',
+   messagingSenderId: '686267099123'
 };

@@ -6,12 +6,13 @@ import { MdSidenav, MdDialog } from '@angular/material';
 class Flight {
   carrid: string;
   connid: string;
-  fldate: string;
+  fldate: Date;
   planetype: string;
-  seatmax: number;
-  seatmaxB: number;
-  seatmaxF: number;
-  seatsocc: number;
+  deptime: string;
+  cityfrom: string;
+  airpfrom: string;
+  cityto: string;
+  airpto: string;
   $key?: string;
 };
 
@@ -43,6 +44,7 @@ export class AppComponent implements OnInit {
   listItemClick(flight) {
     this.selectedFlight = flight;
     console.log(this.selectedFlight);
+    this.sidenav.toggle();
   }
 
   openDialog() {

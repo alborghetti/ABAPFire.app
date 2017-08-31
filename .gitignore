@@ -40,3 +40,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Firebase
+.firebaserc
+firebase.json
+src/environments/firebaseConfig.ts

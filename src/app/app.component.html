@@ -1,49 +1,48 @@
-<md-sidenav-container fullscreen>
-  <md-toolbar color="primary">
-
-    <button md-button (click)="sidenav.toggle()">
-              <md-icon>menu</md-icon>
+<mat-sidenav-container fullscreen>
+  <mat-toolbar color="primary">
+    <button mat-button (click)="sidenav.toggle()">
+              <mat-icon>menu</mat-icon>
           </button> {{title}}
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
     <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-      <a href="http://www.inquaero.com/ABAPFire"><button md-button color="accent"><md-icon>favorite</md-icon> ABAPFire</button></a>
+      <a href="https://alborghetti.github.io/ABAPFire"><button mat-button color="accent"><mat-icon>favorite</mat-icon> ABAPFire</button></a>
     </div>
-    <button md-button [md-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-            <md-icon>more_vert</md-icon>
-           </button>
-  </md-toolbar>
-  <md-menu x-position="before" #menu="mdMenu">
-    <a href="http://www.inquaero.com/ABAPFire"><button md-button color="accent"><md-icon>favorite</md-icon> ABAPFire</button></a>
-  </md-menu>
-  <md-sidenav #sidenav mode="side" opened="false">
+    <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-menu x-position="before" #menu="matMenu">
+    <a href="https://alborghetti.github.io/ABAPFire"><button mat-button color="accent"><mat-icon>favorite</mat-icon> ABAPFire</button></a>
+  </mat-menu>
+  <mat-sidenav #sidenav mode="side" opened="false">
     <div class="example-container">
       <div class="example-header">
-        <md-input-container floatPlaceholder="never">
-          <input mdInput #filter placeholder="Filter flights">
-        </md-input-container>
+        <mat-form-field floatPlaceholder="never">
+          <input matInput #filter placeholder="Filter flights">
+        </mat-form-field>
       </div>
-      <md-nav-list>
-        <h3 md-subheader>Flights</h3>
-        <md-list-item *ngFor="let flight of flights | async" (click)="listItemClick(flight)">
-          <md-icon md-list-icon>flight_takeoff</md-icon>
-          <h4 md-line>{{flight.carrid}} - {{flight.connid}}</h4>
-          <p md-line> {{flight.fldate | date}} </p>
-        </md-list-item>
-      </md-nav-list>
+      <mat-nav-list>
+        <h3 matSubheader>Flights</h3>
+        <mat-list-item *ngFor="let flight of flights | async" (click)="listItemClick(flight)">
+          <mat-icon mat-list-icon>flight_takeoff</mat-icon>
+          <h4 matLine>{{flight.carrid}} - {{flight.connid}}</h4>
+          <p matLine> {{flight.fldate | date}} </p>
+        </mat-list-item>
+      </mat-nav-list>
     </div>
-  </md-sidenav>
+  </mat-sidenav>
 
-  <md-grid-list cols="4" rowHeight="100%">
-    <md-grid-tile [colspan]="4" [rowspan]="1">
-      <md-card class="example-card">
-        <md-card-header>
-          <md-card-title>{{selectedFlight.carrid}} - {{selectedFlight.connid}}</md-card-title>
-          <md-card-subtitle>Flight date: {{selectedFlight.fldate | date}}</md-card-subtitle>
-          <md-card-subtitle>Departure time: {{selectedFlight.deptime}}</md-card-subtitle>
-        </md-card-header>
-        <img md-card-image src="assets/img/{{selectedFlight.planetype}}.jpg">
-        <md-card-content>
+  <mat-grid-list cols="4" rowHeight="100%">
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{selectedFlight.carrid}} - {{selectedFlight.connid}}</mat-card-title>
+          <mat-card-subtitle>Flight date: {{selectedFlight.fldate | date}}</mat-card-subtitle>
+          <mat-card-subtitle>Departure time: {{selectedFlight.deptime}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="assets/img/{{selectedFlight.planetype}}.jpg">
+        <mat-card-content>
           <p>
             Plan type: {{selectedFlight.planetype}}
           </p>
@@ -51,12 +50,12 @@
           </p>
           <p>Arrival Airport: {{selectedFlight.cityto}} / {{selectedFlight.airpto}}
             </p>
-        </md-card-content>
-        <md-card-actions>
+        </mat-card-content>
+        <mat-card-actions>
           <div fxFlex></div>
-          <button md-button (click)="openDialog()"><md-icon>person_add</md-icon> BOOK</button>
-        </md-card-actions>
-      </md-card>
-    </md-grid-tile>
-  </md-grid-list>
-</md-sidenav-container>
+          <button mat-button (click)="openDialog()"><mat-icon>person_add</mat-icon> BOOK</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-sidenav-container>
